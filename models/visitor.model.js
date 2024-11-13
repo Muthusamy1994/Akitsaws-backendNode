@@ -15,7 +15,7 @@ const visitormasters = new Schema(
         },
         phone: {
             type: String,
-        },
+        }, 
         companyname: {
             type: Number
         },

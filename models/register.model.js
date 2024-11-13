@@ -13,7 +13,7 @@ const usermasters = new Schema(
         email: {
             type: String,
         },
-        phone: {
+        phone: { 
             type: String,
         },
         password: {
