@@ -1,21 +1,32 @@
-const express = require('express');
-const mongoose = require('mongoose');
-// const routes = require('./routes/routes');
+// index.js
+import express from 'express';
+import cors from 'cors';  // Optional: If you need to handle cross-origin requests
+import mongoose from 'mongoose';
+import dotenv from 'dotenv'
+import connectDB from './config/mongodb.js';
+import exampleRoutes from './routes/routes.js';
 
-require('dotenv').config();
 
 const app = express();
+connectDB();
 
-const mongoURI = process.env.DB_CONNECTION;
+// Middleware
+app.use(cors());  // Optional
+app.use(express.json());  // To parse JSON request bodies
 
-mongoose.connect(mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(error => console.error('MongoDB connection error:', error));
-  
-  PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-  });  
+// Sample route
+app.get('/', (req, res) => {
+  res.send('Hello, Express!');
+});
+
+
+// Example route import
+// exampleRoutes(app)
+
+app.use('', exampleRoutes);
+
+// Start the server
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
