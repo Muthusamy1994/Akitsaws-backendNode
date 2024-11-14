@@ -7,7 +7,7 @@ export const create = async (req, res) => {
         let userData = req.body
 
         const usermaster = await modelList.register.create(userData);
-        
+
         res.status(201).json({
             status: 201,
             message: 'User registered successfully',

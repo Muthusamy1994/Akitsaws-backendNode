@@ -5,5 +5,5 @@ const router = express.Router();
 
 router.post('/usermasters', create);
 
-export default router;
+export default router; 
 
